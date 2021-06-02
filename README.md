@@ -1,7 +1,7 @@
-rmbcmd (rc)
+recmd (rc)
 -----------
 
-rmbcmd is a remember commend tool
+recmd is a remember commend tool
 
 
 
