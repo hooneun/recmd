@@ -1,4 +1,4 @@
-recmd (rc)
+recmd (re)
 -----------
 
 recmd is a remember commend tool
