@@ -1,10 +1,11 @@
 use std::collections::HashMap;
+
 pub struct ReCmd {
-    cmd: HashMap<String, String>,
+    pub cmd: HashMap<String, String>,
 }
 
 impl ReCmd {
-    fn new() -> Result<Command, std::io::Error> {
+    pub fn new() -> Result<ReCmd, std::io::Error> {
         let f = std::fs::OpenOptions::new()
             .write(true)
             .create(true)
@@ -12,15 +13,15 @@ impl ReCmd {
             .open("re.json")?;
 
         match serde_json::from_reader(f) {
-            Ok(cmd) => Ok(Command { cmd }),
-            Err(e) if e.is_eof() => Ok(Command {
+            Ok(cmd) => Ok(ReCmd { cmd }),
+            Err(e) if e.is_eof() => Ok(ReCmd {
                 cmd: HashMap::new(),
             }),
             Err(e) => panic!("{}", e),
         }
     }
 
-    fn save() {}
+    pub fn save() {}
 
-    fn read() {}
+    pub fn read() {}
 }

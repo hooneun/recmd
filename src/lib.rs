@@ -1,1 +1,1 @@
-mod recmd;
+pub mod recmd;
