@@ -7,15 +7,34 @@ pub struct Config {
 
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, std::io::Error> {
-        // TODO validate
-        // add == args.len() == 4
-        // edit == args.len() == 4
-        // execute == args.len() == 2
-        let kind = args[1].clone();
-        let key = args[2].clone();
-        let cmd = args[3].clone();
+        let mut kind = "";
+        let mut key:String = String::new();
+        let mut cmd:String = String::new();
 
-        Ok(Config { kind, key, cmd })
+        if args.len() == 4 {
+            if args[1] == "a" {
+                kind = "add";
+            } else if args[1] == "e" {
+                kind = "edit";
+            }
+            key = args[2].clone();
+            cmd = args[3].clone();
+        } else if args.len() == 2 {
+            if args[1] == "h" || args[1] == "help" {
+                kind = "help"
+            } else {
+                kind = "exec";
+                cmd = args[1].clone();
+            }
+        } else {
+            panic!("invalid command");
+        }
+
+        Ok(Config {
+            kind: kind.to_string(),
+            key: key.to_string(),
+            cmd: cmd.to_string(),
+        })
     }
 
     pub fn is_add(&self) -> bool {
@@ -26,4 +45,11 @@ impl Config {
         self.kind == "edit"
     }
 
+    pub fn is_help(&self) -> bool {
+        self.kind == "help"
+    }
+
+    pub fn is_exec(&self) -> bool {
+        self.kind == "exec"
+    }
 }

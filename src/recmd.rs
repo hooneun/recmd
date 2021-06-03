@@ -36,7 +36,8 @@ impl ReCmd {
         Ok(())
     }
 
-    pub fn read(self) -> Result<(), std::io::Error> {
+    pub fn read(self, key: String) -> Result<(), std::io::Error> {
+        println!("{:?}, {}", self, key);
         Ok(())
     }
 }
