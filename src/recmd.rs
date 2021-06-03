@@ -23,8 +23,7 @@ impl ReCmd {
     }
 
     pub fn insert(&mut self, key: String, cmd: String) {
-        println!("{} {}", key, cmd);
-        // self.cmd.insert(key, cmd);
+        self.cmd.insert(key, cmd);
     }
 
     pub fn save(self) -> Result<(), std::io::Error> {
@@ -37,5 +36,7 @@ impl ReCmd {
         Ok(())
     }
 
-    pub fn read() {}
+    pub fn read(self) -> Result<(), std::io::Error> {
+        Ok(())
+    }
 }

@@ -17,6 +17,10 @@ fn main() {
     println!("{:?}", recmd);
     if config.is_add() {
         recmd.insert(config.key, config.cmd);
+        match recmd.save() {
+            Ok(_) => println!("recmd saved"),
+            Err(e) => println!("An error occurred: {}", e),
+        }
     } else if config.is_edit() {
     } else {
         panic!("invalid command");

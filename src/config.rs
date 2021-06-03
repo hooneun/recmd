@@ -8,6 +8,9 @@ pub struct Config {
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, std::io::Error> {
         // TODO validate
+        // add == args.len() == 4
+        // edit == args.len() == 4
+        // execute == args.len() == 2
         let kind = args[1].clone();
         let key = args[2].clone();
         let cmd = args[3].clone();
