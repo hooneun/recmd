@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::io::Error;
 
 #[derive(Debug)]
 pub struct ReCmd {
@@ -6,7 +7,7 @@ pub struct ReCmd {
 }
 
 impl ReCmd {
-    pub fn new() -> Result<ReCmd, std::io::Error> {
+    pub fn new() -> Result<ReCmd, Error> {
         let f = std::fs::OpenOptions::new()
             .write(true)
             .create(true)
@@ -26,7 +27,7 @@ impl ReCmd {
         self.cmd.insert(key, cmd);
     }
 
-    pub fn save(self) -> Result<(), std::io::Error> {
+    pub fn save(self) -> Result<(), Error> {
         let f = std::fs::OpenOptions::new()
             .write(true)
             .create(true)
@@ -36,8 +37,10 @@ impl ReCmd {
         Ok(())
     }
 
-    pub fn read(self, key: String) -> Result<(), std::io::Error> {
-        println!("{:?}, {}", self, key);
-        Ok(())
+    pub fn read(self, key: &String) -> Option<String> {
+        match self.cmd.get(key) {
+            Some(v) => Some(v.to_string()),
+            None => None,
+        }
     }
 }

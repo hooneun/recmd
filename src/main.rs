@@ -31,5 +31,6 @@ fn main() {
         println!("help");
     } else if config.is_exec() {
         println!("exec");
+        recmd.read(&config.cmd);
     }
 }
