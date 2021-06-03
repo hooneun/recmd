@@ -39,7 +39,7 @@ impl ReCmd {
 
     pub fn read(self, key: &String) -> Option<String> {
         match self.cmd.get(key) {
-            Some(v) => Some(v.to_string()),
+            Some(cmd) => Some(cmd.to_string()),
             None => None,
         }
     }

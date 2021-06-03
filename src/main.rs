@@ -3,7 +3,8 @@ extern crate recmd;
 use recmd::config::Config;
 use recmd::recmd::ReCmd;
 use std::env;
-// use std::process::Command;
+use std::os::unix::prelude::CommandExt;
+use std::process::Command;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -15,7 +16,6 @@ fn main() {
     println!("config: {:?}", config);
 
     let mut recmd = ReCmd::new().expect("File Init Failed");
-    println!("{:?}", recmd);
     if config.is_add() {
         println!("add");
         recmd.insert(config.key, config.cmd);
@@ -24,13 +24,21 @@ fn main() {
             Err(e) => println!("An error occurred: {}", e),
         }
     } else if config.is_edit() {
+        // TODO
         println!("edit");
-        // let mut cmd = Command::new("ls");
-        // cmd.exec();
     } else if config.is_help() {
+        // TODO
         println!("help");
     } else if config.is_exec() {
-        println!("exec");
-        recmd.read(&config.cmd);
+        let cmd: String = match recmd.read(&config.cmd) {
+            None => panic!("'{}' is not present in the list", config.cmd),
+            Some(cmd) => cmd,
+        };
+
+        // splite string insert arg
+        let mut command = Command::new(cmd);
+        command
+            // .arg("version")
+            .exec();
     }
 }

@@ -1,7 +1,5 @@
 {
-  "a": "ccc",
-  "zz": "zz",
-  "c": "ccddd",
-  "dd": "dd",
-  "b": "ccc"
+  "a": "ls",
+  "c": "rustup",
+  "b": "rustup version"
 }
