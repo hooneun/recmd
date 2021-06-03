@@ -16,7 +16,7 @@ fn main() {
     let mut recmd = ReCmd::new().expect("File Init Failed");
     println!("{:?}", recmd);
     if config.is_add() {
-        recmd.insert(args[2], args[3]);
+        recmd.insert(config.key, config.cmd);
     } else if config.is_edit() {
     } else {
         panic!("invalid command");

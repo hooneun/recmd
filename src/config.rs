@@ -1,8 +1,8 @@
 #[derive(Debug)]
 pub struct Config {
     kind: String,
-    key: String,
-    cmd: String,
+    pub key: String,
+    pub cmd: String,
 }
 
 impl Config {
