@@ -36,9 +36,13 @@ fn main() {
         };
 
         // splite string insert arg
-        let mut command = Command::new(cmd);
-        command
-            // .arg("version")
-            .exec();
+        let cmd_args: Vec<&str> = cmd.split(" ").collect();
+        println!("{:?}", cmd_args);
+        let mut command = Command::new(cmd_args[0]);
+
+        if cmd_args.len() > 1 {
+            command.args(&cmd_args[1..]);
+        }
+        command.exec();
     }
 }
