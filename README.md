@@ -1,7 +1,7 @@
 recmd (re)
 -----------
 
-recmd is a remember commend tool
+recmd is a remember command tool
 
 
 
