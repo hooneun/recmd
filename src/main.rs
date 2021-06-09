@@ -2,6 +2,7 @@ extern crate recmd;
 
 use recmd::config::Config;
 use recmd::recmd::ReCmd;
+use recmd::doc::{ABOUT, HELP};
 use std::env;
 use std::os::unix::prelude::CommandExt;
 use std::process::Command;
@@ -28,7 +29,7 @@ fn main() {
         println!("edit");
     } else if config.is_help() {
         // TODO
-        println!("help");
+        println!("{} \n {}", ABOUT, HELP);
     } else if config.is_exec() {
         let cmd: String = match recmd.read(&config.cmd) {
             None => panic!("'{}' is not present in the list", config.cmd),
