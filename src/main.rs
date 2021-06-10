@@ -30,6 +30,10 @@ fn main() {
     } else if config.is_help() {
         // TODO
         println!("{} \n {}", ABOUT, HELP);
+    } else if config.is_list() {
+       // TODO
+        println!("list");
+        recmd.view();
     } else if config.is_exec() {
         let cmd: String = match recmd.read(&config.cmd) {
             None => panic!("'{}' is not present in the list", config.cmd),

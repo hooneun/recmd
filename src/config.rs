@@ -21,7 +21,9 @@ impl Config {
             cmd = args[3].clone();
         } else if args.len() == 2 {
             if args[1] == "h" || args[1] == "help" {
-                kind = "help"
+                kind = "help";
+            } else if args[1] == "l" || args[1] == "list" {
+                kind = "list";
             } else {
                 kind = "exec";
                 cmd = args[1].clone();
@@ -51,5 +53,9 @@ impl Config {
 
     pub fn is_exec(&self) -> bool {
         self.kind == "exec"
+    }
+
+    pub fn is_list(&self) -> bool {
+        self.kind == "list"
     }
 }

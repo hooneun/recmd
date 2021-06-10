@@ -37,10 +37,22 @@ impl ReCmd {
         Ok(())
     }
 
-    pub fn read(self, key: &String) -> Option<String> {
+    pub fn read(&self, key: &String) -> Option<String> {
         match self.cmd.get(key) {
             Some(cmd) => Some(cmd.to_string()),
             None => None,
         }
+    }
+
+    pub fn view(&self) {
+        if self.cmd.len() > 0 {
+            for (k, v) in self.cmd.iter() {
+                println!("{}\t{}", k, v);
+            }
+
+            return
+        }
+
+        println!("recmd command not found");
     }
 }
