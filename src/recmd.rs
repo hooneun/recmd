@@ -46,8 +46,11 @@ impl ReCmd {
 
     pub fn view(&self) {
         if self.cmd.len() > 0 {
+            println!("#\trecmd\tCommand");
+            let mut cnt = 1;
             for (k, v) in self.cmd.iter() {
-                println!("{}\t{}", k, v);
+                println!("{}\t{}\t{}",cnt, k, v);
+                cnt += 1;
             }
 
             return
