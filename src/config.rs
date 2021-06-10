@@ -14,8 +14,6 @@ impl Config {
         if args.len() == 4 {
             if args[1] == "a" {
                 kind = "add";
-            } else if args[1] == "e" {
-                kind = "edit";
             }
             key = args[2].clone();
             cmd = args[3].clone();
@@ -24,6 +22,8 @@ impl Config {
                 kind = "help";
             } else if args[1] == "l" || args[1] == "list" {
                 kind = "list";
+            } else if args[1] == "d" || args[1] == "delete" {
+                kind = "delete";
             } else {
                 kind = "exec";
                 cmd = args[1].clone();
@@ -57,5 +57,9 @@ impl Config {
 
     pub fn is_list(&self) -> bool {
         self.kind == "list"
+    }
+
+    pub fn is_delete(&self) -> bool {
+        self.kind == "delete"
     }
 }

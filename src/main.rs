@@ -18,6 +18,7 @@ fn main() {
     println!("config: {:?}", config);
 
     let mut recmd = ReCmd::new().expect("File Init Failed");
+
     if config.is_add() {
         println!("add");
         recmd.insert(config.key, config.cmd);
@@ -25,9 +26,9 @@ fn main() {
             Ok(_) => println!("recmd saved"),
             Err(e) => println!("An error occurred: {}", e),
         }
-    } else if config.is_edit() {
+    } else if config.is_delete() {
         // TODO
-        println!("edit");
+        println!("delete");
     } else if config.is_help() {
         // TODO
         println!("{} \n {}", ABOUT, HELP);

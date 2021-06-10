@@ -61,6 +61,10 @@ impl ReCmd {
         }
     }
 
+    pub fn delete(&mut self, key: &String) -> bool {
+        true
+    }
+
     pub fn view(&self) {
         if self.cmd.len() > 0 {
             println!("#\trecmd\tCommand");
