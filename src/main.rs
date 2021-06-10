@@ -10,6 +10,7 @@ use std::process::Command;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
+    println!("OS: {}", env::consts::OS);
     println!("args: {:?}", args);
 
     let config = Config::new(&args).expect("invalid command");
