@@ -13,6 +13,7 @@ recmd is a remember command tool
 - edit command
 - help command
 - mac os store file
+- cd cammand - bash
 
 
 
