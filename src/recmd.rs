@@ -77,6 +77,7 @@ impl ReCmd {
                 println!("{}\t{}\t{}", cnt, k, v);
                 cnt += 1;
             }
+            return;
         }
 
         println!("recmd command not found");
