@@ -46,6 +46,7 @@ impl ReCmd {
 
     pub fn save(self) -> Result<(), Error> {
         let f = OpenOptions::new()
+            .truncate(true)
             .write(true)
             .create(true)
             .open(store_path())?;
