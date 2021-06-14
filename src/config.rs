@@ -8,8 +8,8 @@ pub struct Config {
 impl Config {
     pub fn new(args: &[String]) -> Result<Config, std::io::Error> {
         let mut kind = "";
-        let mut key:String = String::new();
-        let mut cmd:String = String::new();
+        let mut key: String = String::new();
+        let mut cmd: String = String::new();
 
         if args.len() == 4 {
             if args[1] == "a" {
@@ -17,13 +17,16 @@ impl Config {
             }
             key = args[2].clone();
             cmd = args[3].clone();
+        } else if args.len() == 3 {
+            if args[1] == "d" || args[1] == "delete" {
+                kind = "delete";
+            }
+            key = args[2].clone();
         } else if args.len() == 2 {
             if args[1] == "h" || args[1] == "help" {
                 kind = "help";
             } else if args[1] == "l" || args[1] == "list" {
                 kind = "list";
-            } else if args[1] == "d" || args[1] == "delete" {
-                kind = "delete";
             } else {
                 kind = "exec";
                 cmd = args[1].clone();

@@ -1,8 +1,8 @@
 extern crate recmd;
 
 use recmd::config::Config;
-use recmd::recmd::ReCmd;
 use recmd::doc::{ABOUT, HELP};
+use recmd::recmd::ReCmd;
 use std::env;
 use std::os::unix::prelude::CommandExt;
 use std::process::Command;
@@ -29,12 +29,11 @@ fn main() {
     } else if config.is_delete() {
         // TODO
         println!("delete");
+        //recmd.delete(config.key);
     } else if config.is_help() {
         // TODO
         println!("{} \n {}", ABOUT, HELP);
     } else if config.is_list() {
-       // TODO
-        println!("list");
         recmd.view();
     } else if config.is_exec() {
         let cmd: String = match recmd.read(&config.cmd) {

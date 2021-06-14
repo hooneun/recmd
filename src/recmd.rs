@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::env::consts;
-use std::io::Error;
 use std::fs::{create_dir, OpenOptions};
+use std::io::Error;
 
 #[derive(Debug)]
 pub struct ReCmd {
@@ -61,8 +61,8 @@ impl ReCmd {
         }
     }
 
-    pub fn delete(&mut self, key: &String) -> bool {
-        true
+    pub fn delete(&mut self, key: &String) -> Result<(), Error> {
+        Ok(())
     }
 
     pub fn view(&self) {
