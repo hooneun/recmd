@@ -20,19 +20,19 @@ fn main() {
     let mut recmd = ReCmd::new().expect("File Init Failed");
 
     if config.is_add() {
-        println!("add");
         recmd.insert(config.key, config.cmd);
         match recmd.save() {
             Ok(_) => println!("recmd saved"),
             Err(e) => println!("An error occurred: {}", e),
         };
+        recmd.view();
     } else if config.is_delete() {
-        println!("delete");
         recmd.delete(&config.key);
         match recmd.save() {
             Ok(_) => println!("recmd Deleted"),
             Err(e) => println!("An error occurred: {}", e),
         }
+        recmd.view();
     } else if config.is_help() {
         println!("{} \n {}", ABOUT, HELP);
     } else if config.is_list() {

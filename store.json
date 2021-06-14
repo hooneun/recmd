@@ -1,6 +1,6 @@
 {
   "rv1": "cargo --version",
-  "rv2": "cargo --version",
   "rv": "cargo --version",
-  "t": "cd /Users/kimhoon/PhpstormProjects/toun28"
+  "t": "cd /Users/kimhoon/PhpstormProjects/toun28",
+  "rv2": "cargo --version"
 }

@@ -44,7 +44,7 @@ impl ReCmd {
         self.cmd.insert(key, cmd);
     }
 
-    pub fn save(self) -> Result<(), Error> {
+    pub fn save(&self) -> Result<(), Error> {
         let f = OpenOptions::new()
             .truncate(true)
             .write(true)
