@@ -9,21 +9,21 @@ pub struct ReCmd {
 }
 
 fn store_path() -> &'static str {
-    let os = consts::OS;
+    //let os = consts::OS;
 
-    if os == "macos" {
-        return "~/.config/recmd/store.json";
-    }
+    //if os == "macos" {
+    //   return "~/.config/recmd/store.json";
+    //}
 
     "./store.json"
 }
 
 impl ReCmd {
     pub fn new() -> Result<ReCmd, Error> {
-        match create_dir("${HOME}/.config/recmd") {
-            Ok(_) => println!("{}", "OK"),
-            Err(e) => panic!("create dir filed {}", e),
-        }
+        //     match create_dir("${HOME}/.config/recmd") {
+        //           Ok(_) => println!("{}", "OK"),
+        //          Err(e) => panic!("create dir filed {}", e),
+        //        }
 
         let f = OpenOptions::new()
             .write(true)
@@ -61,8 +61,11 @@ impl ReCmd {
         }
     }
 
-    pub fn delete(&mut self, key: &String) -> Result<(), Error> {
-        Ok(())
+    pub fn delete(&mut self, key: &String) -> Option<String> {
+        match self.cmd.get(key) {
+            Some(_) => self.cmd.remove(key),
+            None => None,
+        }
     }
 
     pub fn view(&self) {
@@ -73,8 +76,6 @@ impl ReCmd {
                 println!("{}\t{}\t{}", cnt, k, v);
                 cnt += 1;
             }
-
-            return;
         }
 
         println!("recmd command not found");

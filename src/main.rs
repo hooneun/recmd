@@ -29,7 +29,11 @@ fn main() {
     } else if config.is_delete() {
         // TODO
         println!("delete");
-        //recmd.delete(config.key);
+        recmd.delete(&config.key);
+    //        match recmd.save() {
+    //            Ok(_) => println!("recmd Deleted"),
+    //            Err(e) => println!("An error occurred: {}", e),
+    //        }
     } else if config.is_help() {
         // TODO
         println!("{} \n {}", ABOUT, HELP);
